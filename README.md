@@ -13,10 +13,15 @@ Additionally, you can watch Live TV and PVR recordings via VLC on Linux desktop 
 #### Supported platforms
 * any Linux-based OS, e.g. Ubuntu, Debian
 
-## Installation of tvHeadend
+## Support my work
+If you like my script, please [![Paypal Donation Page](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://paypal.me/sunsettrack4) - thank you! :-)
+
+# Installation
+
+## tvHeadend
 [Please visit the tvHeadend project page to get more information.](https://tvheadend.org/projects/tvheadend/wiki/AptRepositories)
 
-## Installation of the ztvh script
+## ztvh script
 Please run the commands below to setup the script. "Sudo" is not required on user "root".
 
 ```bash
@@ -86,15 +91,29 @@ Please hit the CANCEL button to exit the dialog menu of the script.
 2) Click on "Add" button to add a new IPTV source
 3) Choose "IPTV Automatic Network" and enter a network name
 4) Fill in the fields as follows:
-    "Maximum # input streams" = 1 (for Zattoo FREE) / 2 (for Zattoo PREMIUM) / 4 (for Zattoo ULTIMATE)
-    "URL" = file:///home/<user>/ztvh/channels.m3u   <== enter your PC username instead of "<user>"
-    "Icon base URL" = file:///home/<user>/ztvh      <== enter your PC username instead of "<user>"
-   Accept your settings by clicking on "Save" button
-   tvHeadend will do a channel scan automatically.
+```bash
+"Maximum # input streams" = 1      # for Zattoo FREE
+                          = 2      # for Zattoo PREMIUM
+                          = 4      # for Zattoo ULTIMATE
+```
+```bash
+"URL" = file:///home/<user>/ztvh/channels.m3u
+# enter your PC username instead of "<user>"
+```
+```bash
+"Icon base URL" = file:///home/<user>/ztvh
+# enter your PC username instead of "<user>"
+```
+* Accept your settings by clicking on "Save" button. tvHeadend will do a channel scan automatically.
 5) Go to menu option "Configuration" > "Channel/EPG" > "EPG Grabber Modules" and enable "External: XMLTV"
 6) Go to menu option "Configuration" > "Channel/EPG" > "Channel" > "Map services" > "Map all services" and map the services
-7) Run the command "cat /home/<user>/ztvh/zattoo_fullepg.xml | socat - UNIX-CONNECT:/home/<user>/.hts/tvheadend/epggrab/xmltv.sock"
-   tvHeadend will process the EPG XMLTV file automatically.
+7) Run the following command:
+```bash
+cat /home/<user>/ztvh/<file> | socat - UNIX-CONNECT:/home/<user>/.hts/tvheadend/epggrab/xmltv.sock
+# enter your PC name instead of <user>
+# enter the file name "zattoo_fullepg.xml" or "zattoo_ext_fullepg.xml" instead of <file>
+```
+* tvHeadend will process the EPG XMLTV file automatically.
 
 ## Complete the setup
 * Please use crontab to update the session ID cookie on your device
@@ -122,5 +141,4 @@ sudo crontab -e
 ## Further support
 Contact me for support via email: sunsettrack4@gmail.com
 
-#### DONATIONS ARE APPRECIATED!
-https://paypal.me/sunsettrack4
+FAQ section to follow :-)
